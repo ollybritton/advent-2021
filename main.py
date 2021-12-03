@@ -2,6 +2,7 @@ import time
 
 import day1
 import day2
+import day3
 
 # answers are a list of [[func, official], [func, official]]
 def verify(day, answers):
@@ -13,7 +14,9 @@ def verify(day, answers):
         print(f"Day {day}.{i+1}: got {got}, expected {expected} {'✅' if got == expected else '❌'}")
 
     print(f"Time taken: {round((time.time() - now)*10000)/10}ms")
+    print("")
 
 if __name__ == "__main__":
     verify(1, day1.answers)
     verify(2, day2.answers)
+    verify(3, day3.answers)
