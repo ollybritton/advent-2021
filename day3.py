@@ -1,11 +1,14 @@
 from utils import parse_puzzle_input
 
+# Day 3 was about calculating some values from binary sensor data.
+# https://adventofcode.com/2021/day/3
 day = 3
 
 def part1():
-    data = parse_puzzle_input(day, 1, "\n", lambda x: x)
+    data = parse_puzzle_input(day, "\n", lambda x: x)
     length = len(data)
     
+    # ones stores the number of ones counted in each position. 
     ones = [0] * 12
 
     for num in data:
@@ -25,7 +28,7 @@ def part1():
     
 
 def part2():
-    data = parse_puzzle_input(day, 1, "\n", lambda x: x)
+    data = parse_puzzle_input(day, "\n", lambda x: x)
 
     oxygen_data = data
     co2_data = data.copy()

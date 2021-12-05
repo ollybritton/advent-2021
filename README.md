@@ -1,6 +1,36 @@
 # `advent-2021`
 These are my Python solutions for the Advent of Code event in 2021.
 
-|Day|Name|File|
+|Day|Name|Solution|
 |-|-|-|
-|Day 001|Sonar Sweep|[`day-1.py`](day1.py)|
+|Day 01|[Sonar Sweep](https://adventofcode.com/2021/day/1)|[`day1.py`](./day1.py)|
+|Day 02|[Dive!](https://adventofcode.com/2021/day/2)|[`day2.py`](./day2.py)|
+|Day 03|[Binary Diagnostic](https://adventofcode.com/2021/day/3)|[`day3.py`](./day3.py)|
+|Day 04|[Giant Squid](https://adventofcode.com/2021/day/4)|[`day4.py`](./day4.py)|
+|Day 05|[Hydrothermal Venture](https://adventofcode.com/2021/day/5)|[`day5.py`](./day5.py)|
+
+To try solve all problems, run:
+
+```py
+python3 main.py
+```
+
+To run one day individually, run:
+
+```py
+python3 dayN.py
+```
+
+## Layout
+The input data for each day lives in [`data/inputX.txt`](./data) where `X` is the day number. The functions in [`utils.py`](./utils.py) provide convience functions for looking up and parsing the input data.
+
+Each `dayN.py` file defines two functions `part1()` and `part2` along with a global `answers` variable which is an array that looks like
+
+```
+answers = [
+    [part1, 123],
+    [part2, 456],
+]
+```
+
+This is then imported into [`main.py`](main.py) where the two functions are run, timed and compared against what's expected. [`day_template.py`](day_template.py) is just a template for copying and pasting each day all the scaffolding.

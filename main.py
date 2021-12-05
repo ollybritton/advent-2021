@@ -6,7 +6,7 @@ import day3
 import day4
 import day5
 
-# answers are a list of [[func, official], [func, official]]
+# answers are a list of [[func, expected], [func, expected]] where func returns the answer for that part of the question.
 def verify(day, answers):
     now = time.time()
 

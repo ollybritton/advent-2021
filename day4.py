@@ -1,5 +1,11 @@
 from utils import get_puzzle_input
 
+# Day 4 was about finding the best and the worst bingo boards.
+# https://adventofcode.com/2021/day/4
+#
+# The approach I take here isn't anything fancy. The Board class represents a bingo board
+# which can be marked and checked for solutions. For part 1, it finds the first winning board.
+# For part 2, it plays all the boards until it gets down to one last one.
 day = 4
 
 # Board represents a Bingo board. For example, 
@@ -75,7 +81,7 @@ def parse_board(string):
     return Board(rows)
 
 def part1():
-    puzzle_input = get_puzzle_input(day, 1)
+    puzzle_input = get_puzzle_input(day)
 
     draw_nums = [int(x) for x in puzzle_input.split("\n")[0].split(",")]
     boards = [parse_board(x) for x in puzzle_input.split("\n\n")[1:]]
@@ -88,7 +94,7 @@ def part1():
                 return board.score(num)
 
 def part2():
-    puzzle_input = get_puzzle_input(day, 1)
+    puzzle_input = get_puzzle_input(day)
 
     draw_nums = [int(x) for x in puzzle_input.split("\n")[0].split(",")]
     boards = [parse_board(x) for x in puzzle_input.split("\n\n")[1:]]

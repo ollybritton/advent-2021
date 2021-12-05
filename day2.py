@@ -1,5 +1,7 @@
 from utils import parse_puzzle_input
 
+# Day 2 was about keeping track of a ship given movements it makes.
+# https://adventofcode.com/2021/day/2
 day = 2
 
 def parse_line(line):
@@ -7,7 +9,7 @@ def parse_line(line):
     return line[0], int(line[1])
 
 def part1():
-    data = parse_puzzle_input(day, 1, "\n", parse_line)
+    data = parse_puzzle_input(day, "\n", parse_line)
     
     horizontal = 0
     depth = 0
@@ -23,7 +25,7 @@ def part1():
     return horizontal * depth
 
 def part2():
-    data = parse_puzzle_input(day, 1, "\n", parse_line)
+    data = parse_puzzle_input(day, "\n", parse_line)
     
     horizontal = 0
     depth = 0

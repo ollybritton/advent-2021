@@ -1,6 +1,7 @@
 from utils import parse_puzzle_input
 
 # Day 5 was about finding the amount of times that a point was passed through by at least 2 lines.
+# https://adventofcode.com/2021/day/5
 # 
 # The approach I take here is to work out all the points that the lines go through, store them in a data
 # structure that counts the number of times a point has been added, and then work out the number of ones
@@ -76,7 +77,7 @@ def point_range(a, b):
 
 def part1():
     # [[Point(x1, y1), Point(x2, y2)], ...]
-    point_pairs = parse_puzzle_input(day, 1, "\n", parse_line)
+    point_pairs = parse_puzzle_input(day, "\n", parse_line)
     counts = Intersections()
 
     for pair in point_pairs:
@@ -97,7 +98,7 @@ def part1():
     return counts.above_threshold(2)
 
 def part2():
-    point_pairs = parse_puzzle_input(day, 1, "\n", parse_line)
+    point_pairs = parse_puzzle_input(day, "\n", parse_line)
     counts = Intersections()
 
     for pair in point_pairs:
