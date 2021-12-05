@@ -3,6 +3,7 @@ import time
 import day1
 import day2
 import day3
+import day4
 
 # answers are a list of [[func, official], [func, official]]
 def verify(day, answers):
@@ -13,10 +14,18 @@ def verify(day, answers):
         expected = pair[1]
         print(f"Day {day}.{i+1}: got {got}, expected {expected} {'✅' if got == expected else '❌'}")
 
-    print(f"Time taken: {round((time.time() - now)*10000)/10}ms")
+    total_ms = round((time.time() - now)*10000)/10
+    print(f"Time taken: {total_ms}ms")
     print("")
 
+    return total_ms
+
 if __name__ == "__main__":
-    verify(1, day1.answers)
-    verify(2, day2.answers)
-    verify(3, day3.answers)
+    total_ms = 0
+
+    total_ms += verify(1, day1.answers)
+    total_ms += verify(2, day2.answers)
+    total_ms += verify(3, day3.answers)
+    total_ms += verify(4, day4.answers)
+
+    print(f"Took a total of {round(total_ms*100)/100}ms")

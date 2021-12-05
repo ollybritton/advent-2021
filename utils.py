@@ -1,5 +1,5 @@
-# puzzle_input returns the input for a particular puzzle.
-def puzzle_input(day, part=0):
+# get_puzzle_input returns the input for a particular puzzle.
+def get_puzzle_input(day, part=0):
     path = f"data/input{day}.txt" if part == 0 else f"data/input{day}-{part}.txt"
     
     with open(path, "r") as f:
@@ -8,7 +8,7 @@ def puzzle_input(day, part=0):
 # parse_puzzle_input returns the input for a particular puzzle, after it has been split into chunks
 # and the parser applied to each.
 def parse_puzzle_input(day, part=0, sep="", parser=None):
-    data = puzzle_input(day, part)
+    data = get_puzzle_input(day, part)
 
     if sep != "":
         data = data.split(sep)
