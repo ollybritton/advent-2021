@@ -1,4 +1,5 @@
 from utils import get_puzzle_input
+from statistics import median
 
 # Day 7 was about ...
 # https://adventofcode.com/2021/day/7
@@ -7,28 +8,34 @@ day = 7
 
 def part1():
     crab_numbers = [int(num) for num in get_puzzle_input(day).split(",")]
-    # Optimal value would be the x-coordinate of the stationary point of
-    # y = sum(abs(num - x))
-    
-    target = 2
 
-    count_lt = sum([1 if x < target else 0 for x in crab_numbers])
-    count_gt = sum([1 if x >= target else 0 for x in crab_numbers])
+    min_fuel = None
 
-    print(count_lt, count_gt)
+    for target in range(min(crab_numbers), max(crab_numbers)):
+        fuel = sum([abs(target - x) for x in crab_numbers])
+        if min_fuel == None or fuel < min_fuel:
+            min_fuel = fuel
 
-    fuel = sum([x - target for x in crab_numbers if x > target]) + sum([target - x for x in crab_numbers if x <= target])
-    return fuel
+    return min_fuel
 
 def part2():
-    # parse_puzzle_input(day, "\n", int)
-    pass
+    crab_numbers = [int(num) for num in get_puzzle_input(day).split(",")]
+
+    min_fuel = None
+
+    for target in range(min(crab_numbers), max(crab_numbers)):
+        fuel = sum([int(0.5*abs(target - x)*(abs(target - x)+1)) for x in crab_numbers])
+        if min_fuel == None or fuel < min_fuel:
+            min_fuel = fuel
+
+    return min_fuel
+
 
 answers = [
-    # [part1, 101],
-    # [part2, 101],
+    [part1, 343441],
+    [part2, 98925151],
 ]
 
 if __name__ == "__main__":
     print("Part 1:", part1())
-    # print("Part 2:", part2())
+    print("Part 2:", part2())
