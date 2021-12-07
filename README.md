@@ -1,5 +1,5 @@
 # `advent-2021`
-These are my Python solutions for the Advent of Code event in 2021.
+These are my Python solutions for the Advent of Code event in 2021. The goal is to write code that could be used for any input data and to be able to solve all the puzzles in less than one second total.
 
 |Day|Name|Brief Explanation|Solution|
 |-|-|-|-|
@@ -9,6 +9,7 @@ These are my Python solutions for the Advent of Code event in 2021.
 |Day 04|[Giant Squid](https://adventofcode.com/2021/day/4)|Which bingo boards are the best and worst?|[`day4.py`](./day4.py)|
 |Day 05|[Hydrothermal Venture](https://adventofcode.com/2021/day/5)|Where do these lines overlap?|[`day5.py`](./day5.py)|
 |Day 06|[Lanternfish](https://adventofcode.com/2021/day/6)|Can you model this exponentially-growing population of fish?|[`day6.py`](./day6.py)|
+|Day 07|[The Treachery of Whales](https://adventofcode.com/2021/day/7)|What's the best position for all these crabs to individually move to?|[`day7.py`](./day7.py)|
 
 To try solve all problems, run:
 
