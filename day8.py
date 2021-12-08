@@ -71,17 +71,27 @@ def part2():
         
         for signal in message[0]:
             length = len(signal)
-            
-            if length_map.get(signal) == None:
-                length_map[length] = [signal]
-            else:
-                length_map[length].append(signal)
+            length_map[length] = set(signal)
         
             
         # Look at the coding for number 1 (unique length 1) and for number 7 (unique length 3).
         # The coding for the "a" segment will be the one in 7 that isn't in 1.
-        true_a = set(length_map[3][0]).difference(length_map[2][0]).pop()
-        print(true_a)
+        true_a = length_map[3].difference(length_map[2])
+        
+        values_bd = length_map[2].symmetric_difference(length_map[4])
+        values_eg = length_map[4].symmetric_difference(length_map[7]) - true_a
+    
+        if len(length_map[5].intersection(values_eg)) != 1:
+            # The encoding for length of 5 is a 2.
+            true_c = length_map[5].intersection(length_map[3]) - true_a
+            true_f = length_map[2] - true_c
+            # print(true_a, true_c, true_f)
+
+        else:
+            true_g = length_map[5].intersection(values_eg)
+
+            print(true_g)
+
 
     return
 
