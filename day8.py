@@ -85,9 +85,30 @@ def part2():
             # The encoding for length of 5 is a 2.
             true_c = length_map[5].intersection(length_map[3]) - true_a
             true_f = length_map[2] - true_c
-            # print(true_a, true_c, true_f)
+            
+            true_d = length_map[5].intersection(values_bd)
+            true_b = values_bd - true_d
+
+            if true_f.issubset(length_map[5]):
+                # The encoding for length 5 contains a "g" but not an "e" (is a 3 or a 5).
+                true_g = length_map[5] - true_a - values_bd - values_eg - true_c - true_f
+                true_e = length_map[7] - values_bd - true_g - true_c - true_f
+
+            print(true_a, true_c, true_f, true_d, true_b)
+
+            # if true_c.issubset(length_map[6]):
+            #     # The encoding for length 6 is a 9 or a 0.
+            #     pass
+
+            # else:
+            #     # The encoding for length 6 is a 6.
+            #     pass
+            
+            # print(len(length_map[6] - true_a - true_c - true_f - values))
+
 
         else:
+            # The encoding for length 5 is a 3 or a 5.
             true_g = length_map[5].intersection(values_eg)
 
             print(true_g)
