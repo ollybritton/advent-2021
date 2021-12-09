@@ -37,6 +37,10 @@ def add_or_set(d, key, val):
     else:
         d[key] += val
 
+# set_to_sorted_string converts a set containing characters to a sorted string.
+def set_to_sorted_string(s):
+    return "".join(sorted(list(s)))
+
 #   0:      1:      2:      3:      4:
 #  aaaa    ....    aaaa    aaaa    ....
 # b    c  .    c  .    c  .    c  b    c
@@ -67,52 +71,32 @@ def part2():
     data = parse_puzzle_input(day, "\n", parse_line)
 
     for message in data:
-        length_map = {}
+        length_map = {} # maps signal lengths to the signals that contain them.
+        true_map = {} # maps alphabetically sorted signals to the number they represent.
         
         for signal in message[0]:
             length = len(signal)
-            length_map[length] = set(signal)
-        
             
+            if length_map.get(length) == None:
+                length_map[length] = [set(signal)]
+            else:
+                length_map[length].append(set(signal))
+
+        # Take care of the uniquely numbered ones.
+        true_map[set_to_sorted_string(length_map[2][0])] = 1
+        true_map[set_to_sorted_string(length_map[4][0])] = 4
+        true_map[set_to_sorted_string(length_map[3][0])] = 7
+        true_map[set_to_sorted_string(length_map[7][0])] = 8
+    
         # Look at the coding for number 1 (unique length 1) and for number 7 (unique length 3).
         # The coding for the "a" segment will be the one in 7 that isn't in 1.
-        true_a = length_map[3].difference(length_map[2])
+        true_a = length_map[3][0].difference(length_map[2][0])
         
-        values_bd = length_map[2].symmetric_difference(length_map[4])
-        values_eg = length_map[4].symmetric_difference(length_map[7]) - true_a
-    
-        if len(length_map[5].intersection(values_eg)) != 1:
-            # The encoding for length of 5 is a 2.
-            true_c = length_map[5].intersection(length_map[3]) - true_a
-            true_f = length_map[2] - true_c
-            
-            true_d = length_map[5].intersection(values_bd)
-            true_b = values_bd - true_d
-
-            if true_f.issubset(length_map[5]):
-                # The encoding for length 5 contains a "g" but not an "e" (is a 3 or a 5).
-                true_g = length_map[5] - true_a - values_bd - values_eg - true_c - true_f
-                true_e = length_map[7] - values_bd - true_g - true_c - true_f
-
-            print(true_a, true_c, true_f, true_d, true_b)
-
-            # if true_c.issubset(length_map[6]):
-            #     # The encoding for length 6 is a 9 or a 0.
-            #     pass
-
-            # else:
-            #     # The encoding for length 6 is a 6.
-            #     pass
-            
-            # print(len(length_map[6] - true_a - true_c - true_f - values))
+        values_bd = length_map[2][0].symmetric_difference(length_map[4][0])
+        values_eg = length_map[4][0].symmetric_difference(length_map[7][0]) - true_a
 
 
-        else:
-            # The encoding for length 5 is a 3 or a 5.
-            true_g = length_map[5].intersection(values_eg)
-
-            print(true_g)
-
+        print(true_map, true_a, values_bd, values_eg)            
 
     return
 
