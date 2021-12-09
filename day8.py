@@ -1,8 +1,9 @@
 from utils import parse_puzzle_input
 
-# Day 8 was about ...
+# Day 8 was about working out what a faulty 7-segment display was actually doing. This was the first one that took me more
+# than a day to figure it out. I didn't read the description well enough and thought that they only gave you 6 examples instead
+# of 9, where each number of 6 corresponded to only one number that was that length.
 # https://adventofcode.com/2021/day/8
-# 
 day = 8
 
 def parse_line(line):
@@ -41,34 +42,11 @@ def add_or_set(d, key, val):
 def set_to_sorted_string(s):
     return "".join(sorted(list(s)))
 
-#   0:      1:      2:      3:      4:
-#  aaaa    ....    aaaa    aaaa    ....
-# b    c  .    c  .    c  .    c  b    c
-# b    c  .    c  .    c  .    c  b    c
-#  ....    ....    dddd    dddd    dddd
-# e    f  .    f  e    .  .    f  .    f
-# e    f  .    f  e    .  .    f  .    f
-#  gggg    ....    gggg    gggg    ....
-# 
-#   5:      6:      7:      8:      9:
-#  aaaa    aaaa    aaaa    aaaa    aaaa
-# b    .  b    .  .    c  b    c  b    c
-# b    .  b    .  .    c  b    c  b    c
-#  dddd    dddd    ....    dddd    dddd
-# .    f  e    f  .    f  e    f  .    f
-# .    f  e    f  .    f  e    f  .    f
-#  gggg    gggg    ....    gggg    gggg
-# 
-# 1, 4, 7 and 8 have unique numbers of turned on segments.
-# 
-# 1: 2 are turned on.
-# 4: 4 are turned on.
-# 7: 3 are turned on.
-# 8: 7 are turned on.
-#
-# Can compare 1 and 7 to determine the value of "a". 
+
 def part2():
     data = parse_puzzle_input(day, "\n", parse_line)
+    
+    total = 0
 
     for message in data:
         length_map = {} # maps signal lengths to the signals that contain them.
@@ -95,16 +73,38 @@ def part2():
         values_bd = length_map[2][0].symmetric_difference(length_map[4][0])
         values_eg = length_map[4][0].symmetric_difference(length_map[7][0]) - true_a
 
+        for number in length_map[5]:
+            if len(number.intersection(values_eg)) == 2: # The number 2 is the only number containing both E and G of length 5.
+                true_map[set_to_sorted_string(number)] = 2
+            elif len(number.intersection(values_bd)) == 2: # The number 5 is the only number containing both B and D of length 5.
+                true_map[set_to_sorted_string(number)] = 5
+            else:
+                true_map[set_to_sorted_string(number)] = 3
 
-        print(true_map, true_a, values_bd, values_eg)            
+        for number in length_map[6]:
+            if len(number.intersection(values_eg)) == 2: # Only number 6 and number 0 have both an E and a G.
+                if len(number.intersection(values_bd)) == 2: # Only number 6 has both B and D and is of length 5.
+                    true_map[set_to_sorted_string(number)] = 6
+                else: # Must be a zero.
+                    true_map[set_to_sorted_string(number)] = 0
 
-    return
+            else: # Must be number 9.
+                true_map[set_to_sorted_string(number)] = 9 
+                
+        number = ""
+
+        for code in message[1]:
+            number += str(true_map["".join(sorted(code))])
+
+        total += int(number)
+
+    return total
 
 answers = [
-    # [part1, 101],
-    # [part2, 101],
+    [part1, 473],
+    [part2, 1097568],
 ]
 
 if __name__ == "__main__":
-    # print("Part 1:", part1())
+    print("Part 1:", part1())
     print("Part 2:", part2())

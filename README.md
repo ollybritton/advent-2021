@@ -10,6 +10,7 @@ These are my Python solutions for the Advent of Code event in 2021. The goal is 
 |Day 05|[Hydrothermal Venture](https://adventofcode.com/2021/day/5)|Where do these lines overlap?|[`day5.py`](./day5.py)|
 |Day 06|[Lanternfish](https://adventofcode.com/2021/day/6)|Can you model this exponentially-growing population of fish?|[`day6.py`](./day6.py)|
 |Day 07|[The Treachery of Whales](https://adventofcode.com/2021/day/7)|What's the best position for all these crabs to individually move to?|[`day7.py`](./day7.py)|
+|Day 08|[Seven Segment Search](https://adventofcode.com/2021/day/8)|Can you decode this mixed up seven segment display?|[`day8.py`](./day8.py)|
 
 To try solve all problems, run:
 
