@@ -1,6 +1,6 @@
 # get_puzzle_input returns the input for a particular puzzle.
 def get_puzzle_input(day):
-    path = f"data/input{day}.txt"
+    path = f"data/input{str(day).zfill(2)}.txt"
     
     with open(path, "r") as f:
         return f.read().strip("\n")

@@ -1,14 +1,14 @@
 import time
 
-import day1
-import day2
-import day3
-import day4
-import day5
-import day6
-import day7
-import day8
-import day9
+import day01
+import day02
+import day03
+import day04
+import day05
+import day06
+import day07
+import day08
+import day09
 
 # answers are a list of [[func, expected], [func, expected]] where func returns the answer for that part of the question.
 def verify(day, answers):
@@ -28,14 +28,14 @@ def verify(day, answers):
 if __name__ == "__main__":
     total_ms = 0
 
-    total_ms += verify(1, day1.answers)
-    total_ms += verify(2, day2.answers)
-    total_ms += verify(3, day3.answers)
-    total_ms += verify(4, day4.answers)
-    total_ms += verify(5, day5.answers)
-    total_ms += verify(6, day6.answers)
-    total_ms += verify(7, day7.answers)
-    total_ms += verify(8, day8.answers)
-    total_ms += verify(9, day9.answers)
+    total_ms += verify(1, day01.answers)
+    total_ms += verify(2, day02.answers)
+    total_ms += verify(3, day03.answers)
+    total_ms += verify(4, day04.answers)
+    total_ms += verify(5, day05.answers)
+    total_ms += verify(6, day06.answers)
+    total_ms += verify(7, day07.answers)
+    total_ms += verify(8, day08.answers)
+    total_ms += verify(9, day09.answers)
 
     print(f"Took a total of {round(total_ms*100)/100}ms")
