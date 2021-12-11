@@ -13,6 +13,7 @@ These are my Python solutions for the Advent of Code event in 2021. The goal is 
 |Day 08|[Seven Segment Search](https://adventofcode.com/2021/day/8)|Can you decode this mixed up seven segment display?|[`day08.py`](./day08.py)|
 |Day 09|[Smoke Basin](https://adventofcode.com/2021/day/9)|Can you find which parts of a cave system flow down to which local minimum?|[`day09.py`](./day09.py)|
 |Day 10|[Syntax Scoring](https://adventofcode.com/2021/day/10)|Which string of brackets of valid?|[`day10.py`](./day10.py)|
+|Day 11|[Dumbo Octopus](https://adventofcode.com/2021/day/11)|Can you model these flashing octopuses?|[`day11.py`](./day11.py)|
 
 To try solve all problems, run:
 

@@ -10,6 +10,7 @@ import day07
 import day08
 import day09
 import day10
+import day11
 
 # answers are a list of [[func, expected], [func, expected]] where func returns the answer for that part of the question.
 def verify(day, answers):
@@ -39,5 +40,6 @@ if __name__ == "__main__":
     total_ms += verify(8, day08.answers)
     total_ms += verify(9, day09.answers)
     total_ms += verify(10, day10.answers)
+    total_ms += verify(11, day11.answers)
 
     print(f"Took a total of {round(total_ms*100)/100}ms")
